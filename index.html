@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hamza Attarwala — PhD Researcher & Software Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --surface: #12121a;
+      --border: #1e1e2e;
+      --accent: #7c6af7;
+      --accent2: #4ecdc4;
+      --accent3: #ff6b6b;
+      --text: #e8e8f0;
+      --muted: #6b6b88;
+      --card: #14141e;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg); color: var(--text);
+      font-family: 'DM Sans', sans-serif; font-weight: 300;
+      line-height: 1.7; overflow-x: hidden;
+    }
+
+    body::before {
+      content: ''; position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 100; opacity: 0.4;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 50;
+      padding: 1.2rem 3rem;
+      display: flex; justify-content: space-between; align-items: center;
+      background: rgba(10,10,15,0.85); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo { font-family: 'DM Mono', monospace; font-size: 0.85rem; color: var(--accent); letter-spacing: 0.1em; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-family: 'DM Mono', monospace; font-size: 0.78rem;
+      color: var(--muted); text-decoration: none; letter-spacing: 0.08em;
+      text-transform: uppercase; transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    /* HERO */
+    #hero {
+      min-height: 100vh; display: grid; place-items: center;
+      padding: 8rem 3rem 4rem; position: relative; overflow: hidden;
+    }
+    #hero::before {
+      content: ''; position: absolute; width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(124,106,247,0.12) 0%, transparent 70%);
+      top: -100px; right: -100px; border-radius: 50%;
+      animation: float 8s ease-in-out infinite;
+    }
+    #hero::after {
+      content: ''; position: absolute; width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(78,205,196,0.08) 0%, transparent 70%);
+      bottom: 50px; left: -50px; border-radius: 50%;
+      animation: float 10s ease-in-out infinite reverse;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-30px); }
+    }
+    .hero-inner {
+      max-width: 900px; width: 100%; position: relative; z-index: 1;
+      display: flex; align-items: center; gap: 4rem;
+    }
+    .hero-photo {
+      flex-shrink: 0; width: 160px; height: 160px; border-radius: 50%;
+      border: 2px solid var(--accent); object-fit: cover;
+      opacity: 0; animation: fadeUp 0.7s 0.2s forwards;
+    }
+    .hero-photo-placeholder {
+      flex-shrink: 0; width: 160px; height: 160px; border-radius: 50%;
+      border: 2px dashed var(--accent);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 0.4rem; color: var(--muted);
+      font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.08em;
+      text-align: center; padding: 1rem;
+      opacity: 0; animation: fadeUp 0.7s 0.2s forwards;
+    }
+    .hero-photo-placeholder span { font-size: 1.8rem; }
+    .hero-text { flex: 1; }
+    .hero-tag {
+      font-family: 'DM Mono', monospace; font-size: 0.78rem;
+      color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase;
+      margin-bottom: 1.5rem; opacity: 0; animation: fadeUp 0.6s 0.2s forwards;
+    }
+    h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(3rem, 7vw, 6rem); line-height: 1.05; font-weight: 400;
+      letter-spacing: -0.02em; margin-bottom: 1.5rem;
+      opacity: 0; animation: fadeUp 0.7s 0.35s forwards;
+    }
+    h1 em { font-style: italic; color: var(--accent); }
+    .hero-desc {
+      font-size: 1.05rem; color: var(--muted); max-width: 540px;
+      margin-bottom: 2.5rem; opacity: 0; animation: fadeUp 0.7s 0.5s forwards;
+    }
+    .hero-links {
+      display: flex; gap: 1rem; flex-wrap: wrap;
+      opacity: 0; animation: fadeUp 0.7s 0.65s forwards;
+    }
+    .btn {
+      font-family: 'DM Mono', monospace; font-size: 0.78rem;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 0.75rem 1.8rem; border-radius: 2px;
+      text-decoration: none; transition: all 0.2s; cursor: pointer; border: none;
+    }
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-primary:hover { background: #6b59e8; transform: translateY(-2px); }
+    .btn-outline { border: 1px solid var(--border); color: var(--muted); background: transparent; }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* SECTIONS */
+    section { padding: 6rem 3rem; }
+    .section-inner { max-width: 900px; margin: 0 auto; }
+    .section-label {
+      font-family: 'DM Mono', monospace; font-size: 0.72rem;
+      color: var(--accent); letter-spacing: 0.2em; text-transform: uppercase;
+      margin-bottom: 0.75rem; display: flex; align-items: center; gap: 1rem;
+    }
+    .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); max-width: 60px; }
+    h2 {
+      font-family: 'DM Serif Display', serif; font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 400; letter-spacing: -0.02em; margin-bottom: 3rem; line-height: 1.1;
+    }
+
+    /* ABOUT */
+    #about { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+    .about-text p { color: var(--muted); margin-bottom: 1rem; font-size: 0.98rem; }
+    .stat-row { display: flex; gap: 2rem; margin-top: 2.5rem; flex-wrap: wrap; }
+    .stat-num { font-family: 'DM Serif Display', serif; font-size: 2.5rem; color: var(--accent); line-height: 1; }
+    .stat-label { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; }
+    .skills-block h3 { font-family: 'DM Mono', monospace; font-size: 0.78rem; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1rem; }
+    .tag-group { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
+    .tag { font-family: 'DM Mono', monospace; font-size: 0.72rem; padding: 0.35rem 0.8rem; border-radius: 2px; letter-spacing: 0.05em; }
+    .tag-lang { background: rgba(124,106,247,0.1); border: 1px solid rgba(124,106,247,0.25); color: var(--accent); }
+    .tag-tech  { background: rgba(78,205,196,0.08); border: 1px solid rgba(78,205,196,0.2); color: var(--accent2); }
+
+    /* EXPERIENCE */
+    .timeline { position: relative; }
+    .timeline::before { content: ''; position: absolute; left: 0; top: 8px; bottom: 0; width: 1px; background: var(--border); }
+    .timeline-item { padding-left: 2.5rem; margin-bottom: 3rem; position: relative; }
+    .timeline-item::before {
+      content: ''; position: absolute; left: -4px; top: 8px;
+      width: 9px; height: 9px; border-radius: 50%;
+      background: var(--accent); border: 2px solid var(--bg);
+    }
+    .timeline-meta { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--accent2); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.4rem; }
+    .timeline-item h3 { font-family: 'DM Serif Display', serif; font-size: 1.4rem; font-weight: 400; margin-bottom: 0.2rem; }
+    .timeline-company { font-size: 0.85rem; color: var(--muted); margin-bottom: 1rem; }
+    .timeline-company a { color: var(--accent); text-decoration: none; }
+    .timeline-company a:hover { text-decoration: underline; }
+    .timeline-bullets { list-style: none; }
+    .timeline-bullets li { font-size: 0.9rem; color: var(--muted); padding: 0.3rem 0; padding-left: 1.2rem; position: relative; }
+    .timeline-bullets li::before { content: '→'; position: absolute; left: 0; color: var(--accent); font-size: 0.75rem; }
+
+    /* EDUCATION */
+    #education { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .edu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
+    .edu-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 4px;
+      padding: 2rem; position: relative; overflow: hidden; transition: border-color 0.2s, transform 0.2s;
+    }
+    .edu-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+    .edu-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent), var(--accent2)); }
+    .edu-degree { font-family: 'DM Serif Display', serif; font-size: 1.1rem; font-weight: 400; margin-bottom: 0.4rem; }
+    .edu-field { font-size: 0.85rem; color: var(--accent); margin-bottom: 0.75rem; }
+    .edu-school { font-family: 'DM Mono', monospace; font-size: 0.75rem; color: var(--muted); letter-spacing: 0.05em; }
+    .edu-date { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--muted); margin-top: 0.5rem; }
+    .edu-thesis {
+      display: inline-flex; align-items: center; gap: 0.4rem; margin-top: 1rem;
+      font-family: 'DM Mono', monospace; font-size: 0.7rem;
+      color: var(--accent2); text-decoration: none; letter-spacing: 0.06em;
+      border: 1px solid rgba(78,205,196,0.3); border-radius: 2px;
+      padding: 0.3rem 0.75rem; transition: all 0.2s;
+    }
+    .edu-thesis:hover { background: rgba(78,205,196,0.08); border-color: var(--accent2); }
+
+    /* PUBLICATIONS */
+    .pub-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 4px;
+      padding: 2rem; margin-bottom: 1.5rem;
+      position: relative; transition: border-color 0.2s, transform 0.2s;
+    }
+    .pub-card::before {
+      content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 3px;
+      background: linear-gradient(180deg, var(--accent), var(--accent2));
+      border-radius: 4px 0 0 4px;
+    }
+    .pub-card:hover { border-color: var(--accent); transform: translateX(4px); }
+    .pub-type { font-family: 'DM Mono', monospace; font-size: 0.68rem; color: var(--accent2); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.5rem; }
+    .pub-card h3 { font-family: 'DM Serif Display', serif; font-size: 1.15rem; font-weight: 400; margin-bottom: 0.5rem; line-height: 1.3; }
+    .pub-card h3 a { color: var(--text); text-decoration: none; }
+    .pub-card h3 a:hover { color: var(--accent); }
+    .pub-meta { font-size: 0.83rem; color: var(--muted); margin-bottom: 0.75rem; }
+    .pub-abstract { font-size: 0.85rem; color: var(--muted); line-height: 1.6; margin-bottom: 1rem; }
+    .pub-links { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .pub-link {
+      font-family: 'DM Mono', monospace; font-size: 0.7rem;
+      color: var(--accent); text-decoration: none; letter-spacing: 0.08em;
+      border: 1px solid rgba(124,106,247,0.3); border-radius: 2px;
+      padding: 0.3rem 0.8rem; transition: all 0.2s;
+    }
+    .pub-link:hover { background: rgba(124,106,247,0.1); }
+    .scholar-cta {
+      margin-top: 2.5rem; display: flex; align-items: center; gap: 1.5rem;
+      padding: 1.5rem 2rem;
+      background: var(--card); border: 1px solid var(--border); border-radius: 4px;
+    }
+    .scholar-cta p { font-size: 0.9rem; color: var(--muted); flex: 1; }
+    .scholar-btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-family: 'DM Mono', monospace; font-size: 0.75rem;
+      color: var(--text); text-decoration: none; letter-spacing: 0.08em; text-transform: uppercase;
+      border: 1px solid var(--border); border-radius: 2px;
+      padding: 0.65rem 1.4rem; transition: all 0.2s; white-space: nowrap; flex-shrink: 0;
+    }
+    .scholar-btn:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+    /* PROJECTS */
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+    .project-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 4px;
+      padding: 2rem; transition: border-color 0.2s, transform 0.2s; position: relative;
+    }
+    .project-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+    .project-icon { font-size: 1.5rem; margin-bottom: 1rem; }
+    .project-card h3 { font-family: 'DM Serif Display', serif; font-size: 1.25rem; font-weight: 400; margin-bottom: 0.75rem; }
+    .project-card p { font-size: 0.88rem; color: var(--muted); margin-bottom: 1.25rem; line-height: 1.6; }
+    .project-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .project-tag {
+      font-family: 'DM Mono', monospace; font-size: 0.68rem;
+      padding: 0.25rem 0.6rem; border: 1px solid var(--border); border-radius: 2px;
+      color: var(--muted); letter-spacing: 0.05em;
+    }
+
+    /* CONTACT */
+    #contact { background: var(--surface); border-top: 1px solid var(--border); }
+    .contact-inner { max-width: 600px; margin: 0 auto; text-align: center; }
+    .contact-inner h2 { margin-bottom: 1rem; }
+    .contact-inner p { color: var(--muted); margin-bottom: 2.5rem; }
+    .contact-links { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
+    .contact-link {
+      font-family: 'DM Mono', monospace; font-size: 0.78rem;
+      color: var(--muted); text-decoration: none; letter-spacing: 0.1em;
+      text-transform: uppercase; padding: 0.75rem 1.5rem;
+      border: 1px solid var(--border); border-radius: 2px;
+      transition: all 0.2s; display: flex; align-items: center; gap: 0.5rem;
+    }
+    .contact-link:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+    /* FOOTER */
+    footer {
+      padding: 2rem 3rem; border-top: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center;
+      font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--muted);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 700px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      section { padding: 4rem 1.5rem; }
+      #hero { padding: 6rem 1.5rem 3rem; }
+      .hero-inner { flex-direction: column; gap: 2rem; }
+      .hero-photo, .hero-photo-placeholder { width: 120px; height: 120px; }
+      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .scholar-cta { flex-direction: column; align-items: flex-start; }
+      footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">hamza.attarwala</div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#publications">Research</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-inner">
+      <img src="assets/hero.jpeg" alt="Hamza Attarwala" class="hero-photo" />
+      <div class="hero-text">
+        <p class="hero-tag">// PhD Researcher · Software Engineer · ML Practitioner</p>
+        <h1>Hamza<br><em>Attarwala</em></h1>
+        <p class="hero-desc">
+          Building intelligent systems at the intersection of software engineering and machine learning.
+          PhD student at Polytechnique Montréal, working on scalable AI applications.
+        </p>
+        <div class="hero-links">
+          <a href="https://scholar.google.ca/citations?hl=en&user=qh-rr5IAAAAJ" target="_blank" class="btn btn-primary">Google Scholar ↗</a>
+          <a href="mailto:attarwalahamza@gmail.com" class="btn btn-outline">Get In Touch</a>
+          <a href="https://github.com/HamzaGiTX786" target="_blank" class="btn btn-outline">GitHub ↗</a>
+          <a href="https://www.linkedin.com/in/hamza-attarwala" target="_blank" class="btn btn-outline">LinkedIn ↗</a>
+          <a href="#projects" class="btn btn-outline">View Projects</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-inner">
+      <p class="section-label">About</p>
+      <h2>Researcher & Builder</h2>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>
+            I'm a PhD student in Computer Engineering at Polytechnique Montréal, with a background spanning
+            full-stack development, cloud infrastructure, and applied machine learning.
+          </p>
+          <p>
+            My work bridges rigorous research and practical engineering — from building EV charging platforms
+            to designing AI-powered course recommenders!
+          </p>
+          <p>
+            Previously at EasyFits and EVDrop, I led backend development, optimized APIs, and deployed
+            scalable cloud services. I also spent four years as a Teaching Assistant at Trent University,
+            helping students in learning Python, Java, and Linux workflows.
+          </p>
+          <p>
+            My research sits at the intersection of Artificial Intelligence and Software Engineering (AI4SE), 
+            with a focus on harnessing Large Language Models (LLMs) to augment and automate core SE tasks. Currently, 
+            I'm investigating how LLMs can improve areas such as requirements engineering, code generation, 
+            and formal specification — with the broader goal of making software development more reliable, 
+            efficient, and accessible.
+          </p>
+        </div>
+        <div class="skills-block">
+          <h3>Languages</h3>
+          <div class="tag-group">
+            <span class="tag tag-lang">Python</span>
+            <span class="tag tag-lang">Java</span>
+            <span class="tag tag-lang">JavaScript</span>
+            <span class="tag tag-lang">C</span>
+            <span class="tag tag-lang">SQL</span>
+          </div>
+          <h3>Technologies</h3>
+          <div class="tag-group">
+            <span class="tag tag-tech">AWS</span>
+            <span class="tag tag-tech">React</span>
+            <span class="tag tag-tech">Django</span>
+            <span class="tag tag-tech">NestJS</span>
+            <span class="tag tag-tech">Linux</span>
+            <span class="tag tag-tech">TensorFlow</span>
+            <span class="tag tag-tech">PyTorch</span>
+            <span class="tag tag-tech">Scikit-Learn</span>
+            <span class="tag tag-tech">PostgreSQL</span>
+            <span class="tag tag-tech">Docker</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <div class="section-inner">
+      <p class="section-label">Education</p>
+      <h2>Academic Background</h2>
+      <div class="edu-grid">
+        <div class="edu-card">
+          <div class="edu-degree">Doctor of Philosophy</div>
+          <div class="edu-field">Computer Engineering</div>
+          <div class="edu-school">Polytechnique Montréal</div>
+          <!-- TODO: Update start date once you officially begin -->
+          <div class="edu-date">Jan 2026 — Dec 2029 · Montréal, QC</div>
+        </div>
+        <div class="edu-card">
+          <div class="edu-degree">Master of Science</div>
+          <div class="edu-field">Applied Modeling & Quantitative Methods</div>
+          <div class="edu-school">Trent University</div>
+          <div class="edu-date">Sept 2023 — Aug 2025 · Peterborough, ON</div>
+          <a href="https://scholar.google.ca/citations?view_op=view_citation&hl=en&user=qh-rr5IAAAAJ&citation_for_view=qh-rr5IAAAAJ:u5HHmVD_uO8C"
+             target="_blank" class="edu-thesis">
+            📄 Master's Thesis ↗
+          </a>
+        </div>
+        <div class="edu-card">
+          <div class="edu-degree">Bachelor of Science</div>
+          <div class="edu-field">Computer Science</div>
+          <div class="edu-school">Trent University</div>
+          <div class="edu-date">Sept 2019 — Sept 2023 · Peterborough, ON</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PUBLICATIONS / RESEARCH -->
+  <section id="publications">
+    <div class="section-inner">
+      <p class="section-label">Research</p>
+      <h2>Publications</h2>
+
+      <div class="pub-card">
+        <div class="pub-type">Master's Thesis · 2025</div>
+        <h3>
+          <a href="https://scholar.google.ca/citations?view_op=view_citation&hl=en&user=qh-rr5IAAAAJ&citation_for_view=qh-rr5IAAAAJ:u5HHmVD_uO8C" target="_blank">
+            A Two-Stage Hybrid Deep Learning Framework With Reinforce-Learned Temporal Dilated Convolutions for Predicting Vehicle Left-Turn Speed at Pedestrian Crossings ↗
+          </a>
+        </h3>
+        <div class="pub-meta">Hamza Attarwala · Trent University · 2025</div>
+        <p class="pub-abstract">
+          Predicting vehicle speed at critical road segments, such as pedestrian crossings during left-turn maneuvers at signalized intersections, is essential for improving traffic safety and supporting autonomous driving systems. 
+          This thesis presents a novel two-stage hybrid deep learning framework enhanced with reinforcement learning to forecast vehicle left-turn speed at pedestrian crossings.
+        </p>
+        <div class="pub-links">
+          <a href="https://scholar.google.ca/citations?view_op=view_citation&hl=en&user=qh-rr5IAAAAJ&citation_for_view=qh-rr5IAAAAJ:u5HHmVD_uO8C" target="_blank" class="pub-link">📄 View Thesis</a>
+          <a href="https://github.com/HamzaGiTX786/PathOCL" target="_blank" class="pub-link">⌥ GitHub</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="section-inner">
+      <p class="section-label">Experience</p>
+      <h2>Where I've Worked</h2>
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <p class="timeline-meta">Feb 2025 — Present</p>
+          <h3>Backend Developer</h3>
+          <p class="timeline-company"><a href="https://evdroptech.ca/" target="_blank">EVDrop ↗</a> · Remote</p>
+          <ul class="timeline-bullets">
+            <li>Built an EV charger reservation platform (Django, Clojure, OCPP), reducing driver wait times with 91% positive pre-launch feedback.</li>
+            <li>Deployed automated email notifications via Django + AWS SES with 100% delivery success across 81 reservations in 10 days.</li>
+            <li>Developed a feedback module (Django, PostgreSQL, AWS S3) enabling peer reviews, improving user decision-making.</li>
+            <li>Built a unified analytics dashboard eliminating manual data collection for EV operators.</li>
+          </ul>
+        </div>
+
+        <div class="timeline-item">
+          <p class="timeline-meta">May 2023 — Feb 2025</p>
+          <h3>Software Developer</h3>
+          <p class="timeline-company"><a href="https://easyfits.ca/" target="_blank">EasyFits ↗</a> · Remote</p>
+          <ul class="timeline-bullets">
+            <li>Led development of a virtual try-on platform with personalized 3D avatars, significantly boosting user engagement.</li>
+            <li>Optimized NestJS + PostgreSQL API via Prisma ORM — reduced query time from 200ms to under 100ms.</li>
+            <li>Built web and mobile frontends in React and React Native, integrating D3.js for advanced data visualization.</li>
+            <li>Automated CI/CD pipelines using Docker; deployed Blender-based Python avatar service on AWS S3 and EC2.</li>
+          </ul>
+        </div>
+
+        <div class="timeline-item">
+          <p class="timeline-meta">Jan 2021 — May 2025</p>
+          <h3>Teaching Assistant</h3>
+          <p class="timeline-company">Trent University · Peterborough, ON</p>
+          <ul class="timeline-bullets">
+            <li>Assisted 30+ students with lab assignments across Python, Java, HTML, and CSS coursework.</li>
+            <li>Delivered coding tutorials and lectures to 90+ students covering Linux CLI and GitHub workflows.</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="section-inner">
+      <p class="section-label">Projects</p>
+      <h2>Selected Work</h2>
+      <div class="projects-grid">
+
+        <div class="project-card">
+          <a href="https://github.com/HamzaGiTX786/Course-Rec" target="_blank" style="color: inherit; text-decoration: none;">
+            <div class="project-icon">🎓</div>
+            <h3>CourseRec</h3>
+            <p>AI-powered course recommender chatbot helping students navigate 50+ options using RAG and chain-of-thought reasoning for context-aware, explainable recommendations.</p>
+            <div class="project-tags">
+              <span class="project-tag">RAG</span>
+              <span class="project-tag">CoT Reasoning</span>
+              <span class="project-tag">LLMs</span>
+              <span class="project-tag">NLP</span>
+            </div>
+            <a href="https://github.com/HamzaGiTX786/Course-Rec/blob/master/frontend/src/assets/Hero_Gif.gif" target="_blank" style="display:inline-flex; margin-top:1rem; font-family:'DM Mono',monospace; font-size:0.72rem; color:var(--accent); text-decoration:none; letter-spacing:0.08em;">▶ Watch Demo ↗</a>
+          </a>
+        </div>
+
+        <div class="project-card">
+          <a href="https://github.com/HamzaGiTX786/CreditCardFraudDetection" target="_blank" style="color: inherit; text-decoration: none;">
+            <div class="project-icon">💳</div>
+            <h3>Credit Card Fraud Detection</h3>
+            <p>Full-stack web application for fraud detection using XGBoost and AWS services (SageMaker, Lambda, DynamoDB, S3, Amplify), achieving 98.01% accuracy.</p>
+            <div class="project-tags">
+              <span class="project-tag">XGBoost</span>
+              <span class="project-tag">AWS SageMaker</span>
+              <span class="project-tag">Lambda</span>
+              <span class="project-tag">DynamoDB</span>
+            </div>
+          </a>
+        </div>
+
+        <div class="project-card">
+          <a href="https://github.com/HamzaGiTX786/PathOCL" target="_blank" style="color: inherit; text-decoration: none;">
+            <div class="project-icon">🔧</div>
+            <h3>PathOCL</h3>
+            <p>Path-based prompt augmentation tool using open-source LLMs to automatically generate OCL constraints from natural language, integrating spaCy, similarity ranking, and UML context extraction.</p>
+            <div class="project-tags">
+              <span class="project-tag">LLMs</span>
+              <span class="project-tag">spaCy</span>
+              <span class="project-tag">OCL</span>
+              <span class="project-tag">UML</span>
+            </div>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-inner">
+      <div class="contact-inner">
+        <p class="section-label" style="justify-content: center;">Contact</p>
+        <h2>Let's Connect</h2>
+        <p>Whether it's research collaboration, a project idea, or just a conversation — my inbox is open.</p>
+        <div class="contact-links">
+          <a href="mailto:attarwalahamza@gmail.com" class="contact-link">✉ Email</a>
+          <a href="https://github.com/HamzaGiTX786" target="_blank" class="contact-link">⌥ GitHub</a>
+          <a href="https://www.linkedin.com/in/hamza-attarwala" target="_blank" class="contact-link">✦ LinkedIn</a>
+          <a href="https://scholar.google.ca/citations?hl=en&user=qh-rr5IAAAAJ" target="_blank" class="contact-link">🎓 Scholar</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span>© 2026 Hamza Attarwala</span>
+  </footer>
+
+</body>
+</html>
