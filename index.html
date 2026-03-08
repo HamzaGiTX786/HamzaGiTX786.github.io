@@ -165,8 +165,8 @@
     .timeline-meta { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--accent2); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.4rem; }
     .timeline-item h3 { font-family: 'DM Serif Display', serif; font-size: 1.4rem; font-weight: 400; margin-bottom: 0.2rem; }
     .timeline-company { font-size: 0.85rem; color: var(--muted); margin-bottom: 1rem; }
-    .timeline-company a { color: var(--accent); text-decoration: none; }
-    .timeline-company a:hover { text-decoration: underline; }
+    .timeline-company a, .about-text a { color: var(--accent); text-decoration: none; }
+    .timeline-company a:hover, .about-text a:hover { text-decoration: underline; }
     .timeline-bullets { list-style: none; }
     .timeline-bullets li { font-size: 0.9rem; color: var(--muted); padding: 0.3rem 0; padding-left: 1.2rem; position: relative; }
     .timeline-bullets li::before { content: '→'; position: absolute; left: 0; color: var(--accent); font-size: 0.75rem; }
@@ -332,8 +332,15 @@
       <div class="about-grid">
         <div class="about-text">
           <p>
-            I'm a PhD student in Computer Engineering at Polytechnique Montréal, with a background spanning
-            full-stack development, cloud infrastructure, and applied machine learning.
+            I'm a PhD student in Computer Engineering at Polytechnique Montréal, at the <a href="https://saet.polymtl.ca/saet/" target="_blank">Software Emerging Technologies (SæT)</a> Lab under the supervison of <a href="https://www.polymtl.ca/expertises/en/hamdaqa-mohammad" target="_blank">Dr. Mohammed Hamdaqa</a>.
+            I completed my MSc. in Applied Modeling & Quantitative Methods at Trent University, under the supervision of <a href="https://scholar.google.ca/citations?user=pbqCSx8AAAAJ&hl=en&oi=ao" target="_blank">Dr. Quazi Rahman</a>.
+          </p>
+          <p>
+            My research sits at the intersection of Artificial Intelligence and Software Engineering (AI4SE), 
+            with a focus on harnessing Large Language Models (LLMs) to augment and automate core SE tasks. Currently, 
+            I'm investigating how LLMs can improve areas such as requirements engineering, code generation, 
+            and formal specification — with the broader goal of making software development more reliable, 
+            efficient, and accessible.
           </p>
           <p>
             My work bridges rigorous research and practical engineering — from building EV charging platforms
@@ -343,13 +350,6 @@
             Previously at EasyFits and EVDrop, I led backend development, optimized APIs, and deployed
             scalable cloud services. I also spent four years as a Teaching Assistant at Trent University,
             helping students in learning Python, Java, and Linux workflows.
-          </p>
-          <p>
-            My research sits at the intersection of Artificial Intelligence and Software Engineering (AI4SE), 
-            with a focus on harnessing Large Language Models (LLMs) to augment and automate core SE tasks. Currently, 
-            I'm investigating how LLMs can improve areas such as requirements engineering, code generation, 
-            and formal specification — with the broader goal of making software development more reliable, 
-            efficient, and accessible.
           </p>
         </div>
         <div class="skills-block">
@@ -389,7 +389,6 @@
           <div class="edu-degree">Doctor of Philosophy</div>
           <div class="edu-field">Computer Engineering</div>
           <div class="edu-school">Polytechnique Montréal</div>
-          <!-- TODO: Update start date once you officially begin -->
           <div class="edu-date">Jan 2026 — Dec 2029 · Montréal, QC</div>
         </div>
         <div class="edu-card">
