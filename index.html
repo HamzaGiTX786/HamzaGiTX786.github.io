@@ -219,6 +219,18 @@
       padding: 0.3rem 0.8rem; transition: all 0.2s;
     }
     .pub-link:hover { background: rgba(124,106,247,0.1); }
+    .pub-link.disabled {
+      color: var(--muted);
+      border-color: var(--border);
+      background: rgba(255,255,255,0.02);
+      cursor: not-allowed;
+      pointer-events: none;
+      opacity: 0.7;
+    }
+    .pub-link.disabled:hover {
+      background: rgba(255,255,255,0.02);
+      transform: none;
+    }
     .scholar-cta {
       margin-top: 2.5rem; display: flex; align-items: center; gap: 1.5rem;
       padding: 1.5rem 2rem;
@@ -418,6 +430,27 @@
     <div class="section-inner">
       <p class="section-label">Research</p>
       <h2>Publications</h2>
+
+            <div class="pub-card">
+        <div class="pub-type">MODELS · 2026</div>
+        <h3>
+          <a href="" target="_blank">
+             A Transformation-Based Benchmark for Evaluating the Robustness of LLMs in Generating OCL ↗
+          </a>
+        </h3>
+        <div class="pub-meta">Hamza Attarwala, Moataz Chouchen, Omar Alam, and Mohammad Hamdaqa · 2026</div>
+        <p class="pub-abstract">
+          Large Language Models (LLMs) have shown promising performance in generating Object Constraint Language (OCL) specifications from natural language requirements. 
+          However, existing evaluations often rely on publicly available UML models, which may overstate generalization beyond familiar lexical and structural patterns. 
+          This paper introduces a transformation-driven benchmarking approach for OCL generation, based on deterministic, semantics-preserving UML model transformations—such as identifier renaming, and attribute and association reification—that preserve specification intent while invalidating syntactic cues. 
+          We evaluate a diverse set of closed-source and open-source LLMs of varying scales under zero-shot, few-shot, and chain-of-thought prompting, measuring syntactic accuracy (well-formed and type-correct OCL) and semantic accuracy (correct interpretation with respect to the UML model). While leading models achieve high performance on non-transformed models—up to 92.10% syntactic accuracy and 74.56% semantic accuracy—performance degrades substantially under transformation, with best semantic accuracy dropping to 55.96% for closed-source models and 42.20% for open-source models. 
+          These results demonstrate that current LLMs remain brittle under semantically equivalent but structurally altered models, revealing a reliance on syntactic patterns rather than robust model-aware reasoning, and underscore the need for transformation-based benchmarks in evaluating formal specification generation.
+        </p>
+        <div class="pub-links">
+          <span class="pub-link disabled">📄 Preprint Coming Soon</span>
+          <a href="https://doi.org/10.5281/zenodo.20454636" target="_blank" class="pub-link">⌥ Replication Package</a>
+        </div>
+      </div>
 
       <div class="pub-card">
         <div class="pub-type">Master's Thesis · 2025</div>
