@@ -205,7 +205,7 @@
       border-radius: 4px 0 0 4px;
     }
     .pub-card:hover { border-color: var(--accent); transform: translateX(4px); }
-    .pub-type { font-family: 'DM Mono', monospace; font-size: 0.68rem; color: var(--accent2); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.5rem; }
+    .pub-type, .pub-type a{ font-family: 'DM Mono', monospace; font-size: 0.68rem; color: var(--accent2); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.5rem; text-decoration: none; display: inline-block; }
     .pub-card h3 { font-family: 'DM Serif Display', serif; font-size: 1.15rem; font-weight: 400; margin-bottom: 0.5rem; line-height: 1.3; }
     .pub-card h3 a { color: var(--text); text-decoration: none; }
     .pub-card h3 a:hover { color: var(--accent); }
@@ -431,14 +431,35 @@
       <p class="section-label">Research</p>
       <h2>Publications</h2>
 
-            <div class="pub-card">
-        <div class="pub-type">MODELS · 2026</div>
+      <div class="pub-card">
+        <div class="pub-type"><a href="https://conf.researchr.org/home/eseiw-2026" target="_blank">ESEM · 2026 - Technical Track</a></div>
+        <h3>
+          <a href="" target="_blank">
+             Why Do LLMs Fail at OCL Generation? A Graph Reasoning Perspective ↗
+          </a>
+        </h3>
+        <div class="pub-meta">Hamza Attarwala, Moataz Chouchen, Mohammad Hamdaqa, and Omar Alam · 2026</div>
+        <p class="pub-abstract">
+        Large Language Models (LLMs) are increasingly used to generate Object Constraint Language (OCL) constraints from natural language specifications and UML class diagrams. However, existing work mainly focuses on improving accuracy, with limited understanding of why these models fail. 
+        This study investigates the underlying causes of LLM failures in OCL generation, framing the task as a graph reasoning problem over UML class diagrams. 
+        We conduct an empirical evaluation using the PathOCL dataset across six state-of-the-art LLMs. We analyze the impact of UML structural properties (e.g., navigation depth and model complexity), lexical similarity, prompt ordering strategies, and graph-aware prompting on OCL correctness. 
+        We find that OCL generation performance significantly degrades with increasing navigation depth and structural complexity. Lexical similarity has limited influence, while textual ordering of UML elements affects performance. Graph-based prompting yields partial improvements but does not eliminate structural reasoning errors. 
+        OCL generation is primarily constrained by graph reasoning limitations rather than purely linguistic factors. These results highlight structural reasoning as a key bottleneck for current LLMs in model-driven engineering tasks.
+      </p>
+        <div class="pub-links">
+          <span class="pub-link disabled">📄 Preprint Coming Soon</span>
+          <a href="https://doi.org/10.5281/zenodo.20279636" target="_blank" class="pub-link">⌥ Replication Package</a>
+        </div>
+      </div>
+
+      <div class="pub-card">
+        <div class="pub-type"><a href="https://conf.researchr.org/home/models-2026" target="_blank">MODELS · 2026 - Research Papers: Foundations Track</a></div>
         <h3>
           <a href="" target="_blank">
              A Transformation-Based Benchmark for Evaluating the Robustness of LLMs in Generating OCL ↗
           </a>
         </h3>
-        <div class="pub-meta">Hamza Attarwala, Moataz Chouchen, Omar Alam, and Mohammad Hamdaqa · 2026</div>
+        <div class="pub-meta">Hamza Attarwala, Moataz Chouchen, Mohammad Hamdaqa, and Omar Alam · 2026</div>
         <p class="pub-abstract">
           Large Language Models (LLMs) have shown promising performance in generating Object Constraint Language (OCL) specifications from natural language requirements. 
           However, existing evaluations often rely on publicly available UML models, which may overstate generalization beyond familiar lexical and structural patterns. 
